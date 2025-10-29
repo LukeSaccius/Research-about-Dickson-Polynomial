@@ -10,17 +10,10 @@ def build_and_save_interactive_plot(csv_path="reversed_dickson_values.csv", out_
         print("No rows with value_count == 2 found in", csv_path)
         return
 
-    pattern1_x = []
-    pattern1_y = []
-    pattern1_text = []
-
-    pattern2_x = []
-    pattern2_y = []
-    pattern2_text = []
-
-    pattern3_x = []
-    pattern3_y = []
-    pattern3_text = []
+    # Prepare lists for each pattern
+    pattern1_data = []  # n = (p^2+1)/2
+    pattern2_data = []  # n = p^2-1
+    pattern3_data = []  # n = (p^2+2p-1)/2
 
     for p, group in df2.groupby("p"):
         n_values = sorted(group["n"].tolist())
@@ -30,9 +23,7 @@ def build_and_save_interactive_plot(csv_path="reversed_dickson_values.csv", out_
 
         # Pattern 1
         if n1 in n_values:
-            pattern1_x.append(p)
-            pattern1_y.append(n1)
-            pattern1_text.append(f"p={p}<br>n={n1}<br>pattern= (p^2+1)/2")
+            pattern1_data.append((p, n1))
             n_values.remove(n1)
 
         # Pattern 2 (multiple of base_n2)
@@ -42,48 +33,49 @@ def build_and_save_interactive_plot(csv_path="reversed_dickson_values.csv", out_
                 found_n2 = n
                 break
         if found_n2 is not None:
-            pattern2_x.append(p)
-            pattern2_y.append(found_n2)
-            pattern2_text.append(f"p={p}<br>n={found_n2}<br>pattern= k*(p^2-1)/2 (k={found_n2//base_n2})")
+            pattern2_data.append((p, found_n2))
             n_values.remove(found_n2)
 
-        # Whatever remains -> pattern 3
-        for n in n_values:
-            pattern3_x.append(p)
-            pattern3_y.append(n)
-            pattern3_text.append(f"p={p}<br>n={n}<br>pattern=other/conditional")
+        # The remaining n is the "third n"; prefer the unified closed-form if present
+        n3 = (p ** 2 + 2 * p - 1) // 2
+        if n3 in n_values:
+            third_n = n3
+            n_values.remove(n3)
+            pattern3_data.append((p, third_n))
+        elif n_values:
+            # Fallback to any leftover value
+            third_n = n_values[0]
+            pattern3_data.append((p, third_n))
 
-    fig = go.Figure()
+    # Create traces for the plot
+    traces = []
 
-    fig.add_trace(go.Scatter(
-        x=pattern1_x,
-        y=pattern1_y,
-        mode='markers',
-        marker=dict(size=10, color='blue', symbol='circle'),
-        name='Pattern 1: (p^2+1)/2',
-        text=pattern1_text,
-        hoverinfo='text'
-    ))
+    # Pattern 1
+    if pattern1_data:
+        ps, ns = zip(*pattern1_data)
+        traces.append(go.Scatter(
+            x=ps, y=ns, mode='markers', name='n = (p^2+1)/2',
+            hovertemplate='p=%{x}<br>n=%{y}'
+        ))
 
-    fig.add_trace(go.Scatter(
-        x=pattern2_x,
-        y=pattern2_y,
-        mode='markers',
-        marker=dict(size=10, color='green', symbol='square'),
-        name='Pattern 2: k*(p^2-1)/2',
-        text=pattern2_text,
-        hoverinfo='text'
-    ))
+    # Pattern 2
+    if pattern2_data:
+        ps, ns = zip(*pattern2_data)
+        traces.append(go.Scatter(
+            x=ps, y=ns, mode='markers', name='n = p²-1',
+            hovertemplate='p=%{x}<br>n=%{y}'
+        ))
 
-    fig.add_trace(go.Scatter(
-        x=pattern3_x,
-        y=pattern3_y,
-        mode='markers',
-        marker=dict(size=10, color='red', symbol='diamond'),
-        name='Pattern 3: other (conditional)',
-        text=pattern3_text,
-        hoverinfo='text'
-    ))
+    # Pattern 3 (Unified)
+    if pattern3_data:
+        ps, ns = zip(*pattern3_data)
+        traces.append(go.Scatter(
+            x=ps, y=ns, mode='markers', name='n = (p²+2p-1)/2',
+            hovertemplate='p=%{x}<br>n=%{y}'
+        ))
+
+    # Create the figure
+    fig = go.Figure(data=traces)
 
     fig.update_layout(
         title='Interactive: indices n giving cardinality 2 (hover for details)',
