@@ -30,6 +30,10 @@ For any prime `p > 3`, the three roots of this cubic equation in `n` are precise
 
 For a full breakdown of the methodology, analysis, and theoretical explanations, please see `research_notes.md`.
 
+## Research Notes
+
+- [Reversed Dickson polynomials: two-point value sets (p>3)](docs/proofs/dickson-two-point-value-sets.md)
+
 ## How to Run
 
 ### 1. Generate Data
