@@ -8,9 +8,9 @@ def verify_cardinality_2_patterns():
     print("Verifying patterns for indices 'n' where cardinality is 2...\n")
     
     try:
-        df = pd.read_csv("reversed_dickson_values.csv")
+        df = pd.read_csv("../../data/reversed_dickson_values.csv")
     except FileNotFoundError:
-        print("Error: 'reversed_dickson_values.csv' not found. Please run the data generation script first.")
+        print("Error: 'data/reversed_dickson_values.csv' not found. Please run the data generation script first.")
         return
 
     cardinality_2_df = df[df["value_count"] == 2]

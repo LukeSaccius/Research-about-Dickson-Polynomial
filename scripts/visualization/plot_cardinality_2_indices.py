@@ -10,9 +10,9 @@ def plot_cardinality_2_indices():
     print("Generating plot for indices 'n' where cardinality is 2...")
     
     try:
-        df = pd.read_csv("reversed_dickson_values.csv")
+        df = pd.read_csv("../../data/reversed_dickson_values.csv")
     except FileNotFoundError:
-        print("Error: 'reversed_dickson_values.csv' not found. Please run the data generation script (Test.py) first.")
+        print("Error: 'data/reversed_dickson_values.csv' not found. Please run the data generation script (scripts/data_generation/Test.py) first.")
         return
 
     cardinality_2_df = df[df["value_count"] == 2]
@@ -73,8 +73,8 @@ def plot_cardinality_2_indices():
     plt.yscale('log') # Use a logarithmic scale for y-axis as n grows quadratically
     
     # Save the plot
-    plt.savefig('cardinality_2_indices_plot.png')
-    print("Plot saved as 'cardinality_2_indices_plot.png'")
+    plt.savefig('../../output/plots/cardinality_2_indices_plot.png')
+    print("Plot saved as 'output/plots/cardinality_2_indices_plot.png'")
     plt.close()
 
 if __name__ == "__main__":

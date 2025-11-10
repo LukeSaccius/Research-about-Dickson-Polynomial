@@ -9,9 +9,9 @@ def print_cardinality_2_indices():
     print("--- Indices 'n' Resulting in Cardinality 2 ---\n")
     
     try:
-        df = pd.read_csv("reversed_dickson_values.csv")
+        df = pd.read_csv("../../data/reversed_dickson_values.csv")
     except FileNotFoundError:
-        print("Error: 'reversed_dickson_values.csv' not found. Please run the data generation script (Test.py) first.")
+        print("Error: 'data/reversed_dickson_values.csv' not found. Please run the data generation script (scripts/data_generation/Test.py) first.")
         return
 
     # Filter the DataFrame for rows where the cardinality is 2

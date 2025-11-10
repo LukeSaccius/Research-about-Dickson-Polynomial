@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Load the data
-df = pd.read_csv("reversed_dickson_values.csv")
+df = pd.read_csv("../../data/reversed_dickson_values.csv")
 
 # Get the unique primes
 primes = df["p"].unique()
@@ -17,7 +17,7 @@ for p in primes:
     plt.xlabel("Index (n)")
     plt.ylabel("Cardinality of Value Set")
     plt.grid(True)
-    plt.savefig(f"scatter_p_{p}.png")
+    plt.savefig(f"../../output/plots/scatter_p_{p}.png")
     plt.close()
 
 print("Scatter plots generated for all primes.")

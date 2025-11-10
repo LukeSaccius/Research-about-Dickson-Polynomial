@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-def build_and_save_interactive_plot(csv_path="reversed_dickson_values.csv", out_html="cardinality_2_indices_interactive.html"):
+def build_and_save_interactive_plot(csv_path="../../data/reversed_dickson_values.csv", out_html="../../output/interactive/cardinality_2_indices_interactive.html"):
     # Load data
     df = pd.read_csv(csv_path)
     df2 = df[df["value_count"] == 2].copy()

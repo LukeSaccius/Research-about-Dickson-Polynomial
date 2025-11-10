@@ -2,7 +2,7 @@
 import pandas as pd
 
 # Load the data
-df = pd.read_csv("reversed_dickson_values.csv")
+df = pd.read_csv("../../data/reversed_dickson_values.csv")
 
 # Filter for cardinality 2
 cardinality_2_df = df[df["value_count"] == 2]

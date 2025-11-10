@@ -34,9 +34,9 @@ def exact_rmse(actual, predicted):
 
 def main():
     try:
-        df = pd.read_csv("reversed_dickson_values_by_cardinality.csv")
+        df = pd.read_csv("../../data/reversed_dickson_values_by_cardinality.csv")
     except FileNotFoundError:
-        print("Error: 'reversed_dickson_values_by_cardinality.csv' not found. Run Test.py first.")
+        print("Error: 'data/reversed_dickson_values_by_cardinality.csv' not found. Run scripts/data_generation/Test.py first.")
         return
 
     # Use only value_count == 2

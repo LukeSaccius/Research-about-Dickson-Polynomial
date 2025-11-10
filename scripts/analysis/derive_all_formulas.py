@@ -63,9 +63,9 @@ def fit_and_print_poly(name, data, degree=2):
 def main():
     # Load data
     try:
-        df = pd.read_csv("reversed_dickson_values_by_cardinality.csv")
+        df = pd.read_csv("../../data/reversed_dickson_values_by_cardinality.csv")
     except FileNotFoundError:
-        print("Error: 'reversed_dickson_values_by_cardinality.csv' not found.")
+        print("Error: 'data/reversed_dickson_values_by_cardinality.csv' not found.")
         print("Please run Test.py to generate the data.")
         return
 

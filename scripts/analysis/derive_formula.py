@@ -15,7 +15,7 @@ def is_prime(n):
     return True
 
 
-def extract_third_n_non_twin(csv_path="reversed_dickson_values.csv"):
+def extract_third_n_non_twin(csv_path="../../data/reversed_dickson_values.csv"):
     df = pd.read_csv(csv_path)
     df2 = df[df["value_count"] == 2]
 
@@ -101,7 +101,7 @@ def main():
     results = fit_polynomials(points, degrees=(2, 3))
 
     # Save results
-    with open('formula_results.txt', 'w') as f:
+    with open('../../output/results/formula_results.txt', 'w') as f:
         f.write("Non-twin primes and their 'third n' values:\n")
         for p, n in points:
             f.write(f"p={p}, n={n}\n")
@@ -116,7 +116,7 @@ def main():
             f.write(f"  Polynomial: n(p) = {pretty_poly_str(coeffs)}\n\n")
 
     # Also print summary
-    print('\nFit results written to formula_results.txt')
+    print('\nFit results written to output/results/formula_results.txt')
     for deg, info in results.items():
         print(f"Degree {deg} RMSE: {info['rmse']}")
         print(f"Degree {deg} poly: n(p) = {pretty_poly_str(info['coeffs'])}\n")

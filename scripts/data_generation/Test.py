@@ -42,12 +42,12 @@ with pd.option_context("display.max_rows", None, "display.max_columns", None, "d
 # Save a CSV-friendly copy
 df_for_csv = df.copy()
 df_for_csv["values"] = df_for_csv["values"].apply(lambda lst: ",".join(str(v) for v in lst))
-df_for_csv.to_csv("reversed_dickson_values.csv", index=False)
-print('Saved results to "reversed_dickson_values.csv".')
+df_for_csv.to_csv("../../data/reversed_dickson_values.csv", index=False)
+print('Saved results to "data/reversed_dickson_values.csv".')
 
 # Sort by cardinality (descending) then save a separate CSV
 df_sorted = df.sort_values(["value_count", "p", "n"], ascending=[False, True, True]).reset_index(drop=True)
 df_sorted_for_csv = df_sorted.copy()
 df_sorted_for_csv["values"] = df_sorted_for_csv["values"].apply(lambda lst: ",".join(str(v) for v in lst))
-df_sorted_for_csv.to_csv("reversed_dickson_values_by_cardinality.csv", index=False)
-print('Saved sorted results to "reversed_dickson_values_by_cardinality.csv".')
+df_sorted_for_csv.to_csv("../../data/reversed_dickson_values_by_cardinality.csv", index=False)
+print('Saved sorted results to "data/reversed_dickson_values_by_cardinality.csv".')

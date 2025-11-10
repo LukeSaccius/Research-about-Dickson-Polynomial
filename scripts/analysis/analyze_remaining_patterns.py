@@ -18,9 +18,9 @@ def analyze_remaining_patterns():
     print("Analyzing the remaining 'n' values for non-twin primes...\n")
     
     try:
-        df = pd.read_csv("reversed_dickson_values.csv")
+        df = pd.read_csv("../../data/reversed_dickson_values.csv")
     except FileNotFoundError:
-        print("Error: 'reversed_dickson_values.csv' not found.")
+        print("Error: 'data/reversed_dickson_values.csv' not found.")
         return
 
     cardinality_2_df = df[df["value_count"] == 2]
