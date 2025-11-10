@@ -63,6 +63,10 @@ A specific investigation was conducted to understand the cases where the cardina
 
 While the code was essential for *discovering* the patterns, the *reason* for their existence lies in the fundamental mathematical theory of Dickson polynomials and finite fields.
 
+For a **complete mathematical proof** of why these three specific indices produce cardinality 2, see **[proof_cardinality_2.md](proof_cardinality_2.md)**.
+
+### Summary of Theoretical Insights
+
 *   **The Core Concept:** The behavior of these polynomials is governed by their connection to exponentiation in a larger mathematical structure called a **finite field extension**, specifically `F_p²`. In this field, any value `x` in our original field `F_p` can be represented by an element `γ` such that `x = γ + 1/γ`. The reversed Dickson polynomial `D_n(1, x)` is then related to `γ^n + 1/γ^n`.
 
 *   **Proof Sketch for the `n = p² - 1` Pattern:**
@@ -70,7 +74,12 @@ While the code was essential for *discovering* the patterns, the *reason* for th
     2.  **The Collapse:** When we set our index `n = p² - 1`, the expression `γ^n + 1/γ^n` becomes `γ^(p²-1) + 1/γ^(p²-1)`.
     3.  **The Result:** This simplifies to `1 + 1/1 = 2`. This means that for this specific `n`, the polynomial's value collapses to `2` for almost all inputs, which is why the resulting set of values is extremely small.
 
-*   **Implication:** This proves that `n = p² - 1` is not a random number but a fundamental constant of the mathematical system being studied. Our code empirically discovered an effect, and the theory provides the cause: the index `n` is interacting with the natural "cycle length" of the finite field. The other patterns for `n` have similarly deep, though more complex, explanations rooted in abstract algebra.
+*   **Key Results from the Proof:**
+    - **n = p² - 1:** Value set is {1, 2} because raising to power (p²-1) forces almost all elements to 1
+    - **n = (p²+1)/2:** Value set is {1, p-1} because the exponent (p²-1)/2 creates square roots of unity (±1)
+    - **n = (p²+2p-1)/2:** Value set is {1, p-1} through similar group-theoretic properties
+
+*   **Implication:** This proves that these indices are not random numbers but fundamental constants of the mathematical system being studied. Our code empirically discovered effects, and the theory provides the causes: the indices are interacting with the natural "cycle length" of the finite field.
 
 ## 6. Summary of Key Findings
 

@@ -10,11 +10,13 @@ The primary goal is to analyze the cardinality (the number of unique values) of 
 
 The research uncovered and numerically verified three distinct formulas for the indices `n` that produce a value set of cardinality 2. For any given prime `p > 3`, the set of these indices is:
 
-1.  **Formula 1:** `n = (p^2 + 1) / 2`
-2.  **Formula 2:** `n = p^2 - 1`
-3.  **Formula 3:** `n = (p^2 + 2p - 1) / 2`
+1.  **Formula 1:** `n = (p^2 + 1) / 2` → value set {1, p-1}
+2.  **Formula 2:** `n = p^2 - 1` → value set {1, 2}
+3.  **Formula 3:** `n = (p^2 + 2p - 1) / 2` → value set {1, p-1}
 
 All three formulas were verified with **RMSE = 0** (exact match) across the dataset for primes up to 97.
+
+**For a complete mathematical proof**, see [proof_cardinality_2.md](proof_cardinality_2.md).
 
 ### General Polynomial Equation
 
@@ -50,6 +52,12 @@ python derive_all_formulas.py
 python verify_all_formulas_exact.py
 ```
 
+**Verify value sets match theoretical predictions:**
+```bash
+python verify_value_sets.py
+```
+This script computationally confirms that the three special indices produce exactly the value sets predicted by the mathematical proof.
+
 ### 3. Visualize Data
 
 **Generate interactive plot:**
@@ -71,7 +79,9 @@ This creates `cardinality_2_indices_interactive.html` with hover details and log
 ├── Test.py                              # Data generation
 ├── derive_all_formulas.py               # Polynomial regression on all patterns
 ├── verify_all_formulas_exact.py         # Exact verification (RMSE=0)
+├── verify_value_sets.py                 # Verify theoretical value sets
 ├── plot_cardinality_2_interactive.py    # Interactive visualization
+├── proof_cardinality_2.md               # Complete mathematical proof
 ├── research_notes.md                    # Detailed methodology and findings
 ├── README.md                            # This file
 └── [analysis scripts]                   # Additional exploration tools
