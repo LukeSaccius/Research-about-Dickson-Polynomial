@@ -173,25 +173,25 @@ Combining B1, B2, and Lemma 1 proves the classification.
 
 ## 4. Final explicit formulas on $\mathbb{F}_p$
 
-- If $n\equiv p^2-1\ (\bmod\ p^2-1)$ (e.g. $n=p^2-1$):
+**Case 1:** If $n\equiv p^2-1\pmod{p^2-1}$ (e.g. $n=p^2-1$):
 
-  $$
-  D_n(x,1)=\begin{cases}
-  1,& x=0,\\
-  2,& x\ne 0,
-  \end{cases}
-  \quad\Rightarrow\quad \mathrm{Im}(D_n)=\{1,2\}.
-  $$
+$$
+D_n(x,1)=\begin{cases}
+1,& x=0,\\
+2,& x\ne 0
+\end{cases}
+\quad\Rightarrow\quad \mathrm{Im}(D_n)=\{1,2\}.
+$$
 
-- If $n\equiv \dfrac{p^2+1}{2}$ or $n\equiv \dfrac{p^2+2p-1}{2}\ (\bmod\ p^2-1)$:
+**Case 2:** If $n\equiv \dfrac{p^2+1}{2}\pmod{p^2-1}$ or $n\equiv \dfrac{p^2+2p-1}{2}\pmod{p^2-1}$:
 
-  $$
-  D_n(x,1)=\begin{cases}
-  1,& 1-4x \text{ square in }\mathbb{F}_p\ (\text{including }0),\\
-  p-1,& 1-4x \text{ non-square},
-  \end{cases}
-  \quad\Rightarrow\quad \mathrm{Im}(D_n)=\{1,p-1\}.
-  $$
+$$
+D_n(x,1)=\begin{cases}
+1,& 1-4x \text{ square in }\mathbb{F}_p\ (\text{including }0),\\
+p-1,& 1-4x \text{ non-square}
+\end{cases}
+\quad\Rightarrow\quad \mathrm{Im}(D_n)=\{1,p-1\}.
+$$
 
 *Keywords:* Dickson polynomial, reversed Dickson, finite fields, value set, quadratic character.
 
